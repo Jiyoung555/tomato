@@ -2,3 +2,15 @@ spring:
   h2:
     console:
       enabled: true
+
+  # JPA 설정 (들여쓰기 : spring 안의 jpa임) (entity가 db로 들어가기 위해 테이블 틀이 되는 과정을 보여줄 거임)
+  jpa:
+    show-sql: true # JPA 동작 시, sql 보여줘 (여기까지만 하면 한줄로 쫙 나옴. 더 이쁘게 엔터 딱딱 쳐서 보이게? 아래로)
+    properties:
+      hibernate.format_sql: true # 보기 좋게 출력!
+
+#로그에 ? 물음표 없애기 => "jpa yaml log 파라미터 확인"
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type: trace

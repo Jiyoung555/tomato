@@ -34,12 +34,15 @@ public class ArticleController {
     }
 
     @GetMapping("/articles/{id}")
-    public String getArticle(@PathVariable Long id, Model model){
-        Article entity = articleRepository.findById(id).orElseThrow(
+    public String show(@PathVariable Long id, Model model){
+        Article article = articleRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("Article 없음")
         );
 
-        model.addAttribute("article", entity);
+        model.addAttribute("article", article);
+
+        model.addAttribute("comments", article.getComments());
+
         return "articles/show";
     }
 
